@@ -1,0 +1,57 @@
+- 🏠 Dashboard
+- 🚧 Controle de Pátio
+  - Tela Principal (Kanban)
+  - Detalhes da Ordem de Serviço (Produção)
+- 🔧 Orçamentos
+  - Tela de Listagem
+  - Tela de Criação/Edição (Protocolo VBI)
+- 💰 Financeiro
+  - Visão Geral (Resumo Financeiro)
+  - Receitas
+  - Despesas
+- 🗓️ Agendamento
+  - Calendário de Agendamentos
+  - Lista de Agendamentos
+- 👥 Clientes
+  - Tela de Listagem
+  - Detalhes do Cliente
+  - Criação/Edição de Cliente
+- 👤 Funcionários
+  - Tela de Listagem
+  - Detalhes do Funcionário
+  - Criação/Edição de Funcionário
+- 📦 Inventário
+  - Catálogo de Produtos e Serviços
+    - Listagem de Itens
+    - Criação/Edição de Produto
+    - Criação/Edição de Serviço
+  - Estoque Geral (Controle de Saldo)
+  - Gestão de Ferramentas
+    - Listagem de Ferramentas
+    - Requisição/Devolução de Ferramenta
+    - Histórico de Ferramenta
+  - Kanban do Laboratório de Tintas
+  - Gestão de Fórmulas de Tinta
+  - Pesagem e Produção de Tinta
+- 📊 Relatórios
+  - Relatórios de Vendas
+  - Relatórios Financeiros
+  - Relatórios de Produtividade
+  - Relatórios de Estoque
+- ⚙️ Configurações
+  - 🏢 Dados da Empresa
+    - Formulário de Edição (Nome, Logo, etc.)
+  - 📚 Gestão de Catálogos
+    - Editor de Etapas do Kanban
+    - Editor de Categorias Financeiras
+  - 🔗 Gestão de Integrações
+    - Painéis de Configuração de APIs
+- 🆘 Suporte
+  - 🔍 Central de Ajuda
+    - Barra de Busca
+    - Seção de FAQ (Perguntas Frequentes)
+    - Seção de Guias e Tutoriais
+  - 📄 Gerenciar Artigos (Criação/Edição)
+- Perfil do Usuário
+  - Configurações de Perfil
+  - Alterar Senha

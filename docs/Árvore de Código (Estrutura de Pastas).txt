@@ -1,0 +1,113 @@
+apppremium/
+├── backend/
+│   ├── src/
+│   │   ├── main.ts                     # Ponto de entrada da aplicação NestJS
+│   │   ├── app.module.ts                 # Módulo raiz da aplicação
+│   │   ├── app.controller.ts             # Controlador principal (servindo o frontend)
+│   │   ├── app.service.ts                # Serviço principal
+│   │   ├── prisma/                       # Módulo Prisma
+│   │   │   ├── prisma.module.ts
+│   │   │   └── prisma.service.ts
+│   │   ├── customers/                    # Módulo de Clientes
+│   │   │   ├── customers.module.ts
+│   │   │   ├── customers.service.ts
+│   │   │   ├── customers.controller.ts
+│   │   │   └── dto/                      # Data Transfer Objects
+│   │   ├── vehicles/                     # Módulo de Veículos
+│   │   │   ├── vehicles.module.ts
+│   │   │   ├── vehicles.service.ts
+│   │   │   ├── vehicles.controller.ts
+│   │   │   └── dto/
+│   │   ├── employees/                    # Módulo de Funcionários
+│   │   │   ├── employees.module.ts
+│   │   │   ├── employees.service.ts
+│   │   │   ├── employees.controller.ts
+│   │   │   └── dto/
+│   │   ├── products/                     # Módulo de Produtos
+│   │   │   ├── products.module.ts
+│   │   │   ├── products.service.ts
+│   │   │   ├── products.controller.ts
+│   │   │   └── dto/
+│   │   ├── services/                     # Módulo de Serviços
+│   │   │   ├── services.module.ts
+│   │   │   ├── services.service.ts
+│   │   │   ├── services.controller.ts
+│   │   │   └── dto/
+│   │   ├── budgets/                      # Módulo de Orçamentos
+│   │   │   ├── budgets.module.ts
+│   │   │   ├── budgets.service.ts
+│   │   │   ├── budgets.controller.ts
+│   │   │   └── dto/
+│   │   ├── budget-items/                 # Módulo de Itens de Orçamento
+│   │   │   ├── budget-items.module.ts
+│   │   │   ├── budget-items.service.ts
+│   │   │   ├── budget-items.controller.ts
+│   │   │   └── dto/
+│   │   ├── visual-markings/              # Módulo de Marcações Visuais (VBI)
+│   │   │   ├── visual-markings.module.ts
+│   │   │   ├── visual-markings.service.ts
+│   │   │   ├── visual-markings.controller.ts
+│   │   │   └── dto/
+│   │   ├── catalog/                      # Módulo de Catálogo (Produtos e Serviços)
+│   │   │   ├── catalog.module.ts
+│   │   │   ├── catalog.service.ts
+│   │   │   ├── catalog.controller.ts
+│   │   │   └── dto/
+│   │   ├── financeiro/                   # Módulo Financeiro
+│   │   │   ├── financeiro.module.ts
+│   │   │   ├── financeiro.service.ts
+│   │   │   ├── financeiro.controller.ts
+│   │   │   └── dto/
+│   │   ├── tools/                        # Módulo de Gestão de Ferramentas
+│   │   │   ├── tools.module.ts
+│   │   │   ├── tools.service.ts
+│   │   │   ├── tools.controller.ts
+│   │   │   └── dto/
+│   │   ├── configurations/               # Módulo de Configurações (Dados da Empresa, Catálogos, Integrações)
+│   │   │   ├── configurations.module.ts
+│   │   │   ├── configurations.service.ts
+│   │   │   ├── configurations.controller.ts
+│   │   │   └── dto/
+│   │   └── support/                      # Módulo de Suporte (Central de Ajuda, Artigos)
+│   │       ├── support.module.ts
+│   │       ├── support.service.ts
+│   │       ├── support.controller.ts
+│   │       └── dto/
+│   ├── prisma/                           # Configuração e migrações do Prisma ORM
+│   │   ├── schema.prisma                 # Definição do esquema do banco de dados
+│   │   └── migrations/                   # Histórico de migrações do banco de dados
+│   ├── package.json                      # Dependências e scripts do backend
+│   ├── tsconfig.json                     # Configuração TypeScript
+│   └── .env                              # Variáveis de ambiente (conexão DB, etc.)
+├── frontend/
+│   ├── public/
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── main.jsx                      # Ponto de entrada da aplicação React
+│   │   ├── App.jsx                       # Componente principal da aplicação
+│   │   ├── index.css                     # Estilos globais
+│   │   ├── components/                   # Componentes reutilizáveis
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── ControlePatioPage.jsx
+│   │   │   ├── OrcamentosPage.jsx
+│   │   │   ├── FinanceiroPage.jsx
+│   │   │   ├── AgendamentoPage.jsx
+│   │   │   ├── ClientesPage.jsx
+│   │   │   ├── FuncionariosPage.jsx
+│   │   │   ├── InventarioPage.jsx
+│   │   │   ├── RelatoriosPage.jsx
+│   │   │   ├── SuportePage.jsx
+│   │   │   ├── ConfiguracoesPage.jsx   # Nova página de Configurações
+│   │   │   └── PerfilPage.jsx
+│   │   └── assets/                       # Ativos estáticos (imagens, etc.)
+│   ├── package.json                      # Dependências e scripts do frontend
+│   ├── pnpm-lock.yaml                    # Lockfile do pnpm
+│   └── vite.config.js                    # Configuração do Vite
+└── flask-wrapper/
+    ├── src/
+    │   └── main.py                       # Aplicação Flask para servir frontend e proxy backend
+    ├── requirements.txt                  # Dependências Python do Flask wrapper
+    └── venv/                             # Ambiente virtual Python

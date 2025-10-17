@@ -1,0 +1,98 @@
+- 🏠 Dashboard
+  - Visualizar KPIs gerais (clientes, orçamentos, veículos, financeiro)
+  - Visualizar gráficos de status de orçamentos e financeiro
+- 🚧 Controle de Pátio
+  - Visualizar Kanban de Ordens de Serviço (OS)
+  - Arrastar e soltar cards de OS entre as colunas (alterar status)
+  - Filtrar OSs por status, setor, cliente, placa, funcionário
+  - Ver Detalhes da OS (redirecionar para Produção)
+- 🔧 Orçamentos
+  - Criar Novo Orçamento
+  - Editar Orçamento Existente
+  - Aplicar Protocolo VBI (múltiplas marcações em fotos)
+  - Adicionar serviços/peças do catálogo ao orçamento
+  - Aplicar descontos (percentual ou valor fixo)
+  - Especificar formas de pagamento
+  - Adicionar observações
+  - Salvar Orçamento
+  - Enviar Orçamento ao Cliente
+  - Gerar PDF do Orçamento
+- 💰 Financeiro
+  - Visualizar resumo financeiro (receitas, despesas, lucro líquido)
+  - Registrar Nova Receita
+  - Registrar Nova Despesa
+  - Visualizar extrato de movimentações
+  - Filtrar movimentações por período, tipo, categoria
+- 🗓️ Agendamento
+  - Criar Novo Agendamento
+  - Editar Agendamento Existente
+  - Visualizar calendário de agendamentos
+  - Visualizar lista de agendamentos
+- 👥 Clientes
+  - Cadastrar Novo Cliente
+  - Editar Cliente Existente
+  - Visualizar Detalhes do Cliente (veículos, histórico de serviços)
+  - Criar Novo Orçamento para Cliente (redirecionar)
+  - Buscar/Filtrar Clientes
+- 👤 Funcionários
+  - Cadastrar Novo Funcionário
+  - Editar Funcionário Existente
+  - Visualizar Detalhes do Funcionário (produtividade, histórico)
+  - Buscar/Filtrar Funcionários
+- 📦 Inventário
+  - Catálogo de Produtos e Serviços
+    - Adicionar Novo Item (Produto/Serviço)
+    - Editar Item Existente
+    - Excluir Item
+    - Buscar/Filtrar Itens
+  - Estoque Geral
+    - Adicionar Estoque (Entrada Manual)
+    - Remover Estoque (Saída Manual)
+    - Visualizar Saldo Atual de Produtos
+    - Visualizar Histórico de Movimentação (Kardex)
+  - Gestão de Ferramentas
+    - Adicionar Nova Ferramenta
+    - Editar Ferramenta Existente
+    - Requisitar Ferramenta
+    - Devolver Ferramenta
+    - Visualizar Histórico de Ferramenta
+    - Buscar/Filtrar Ferramentas
+  - Kanban do Laboratório de Tintas
+    - Arrastar e soltar cards de demanda de cor entre as colunas
+    - Visualizar detalhes da demanda de cor
+  - Gestão de Fórmulas de Tinta
+    - Criar Nova Fórmula de Tinta
+    - Editar Fórmula Existente
+    - Excluir Fórmula
+    - Buscar Fórmulas
+  - Pesagem e Produção de Tinta
+    - Selecionar OS e Fórmula
+    - Definir Quantidade Desejada
+    - Finalizar Produção e Dar Baixa no Estoque
+- 📊 Relatórios
+  - Gerar Relatório de Vendas
+  - Gerar Relatório Financeiro
+  - Gerar Relatório de Produtividade por Funcionário/Serviço
+  - Gerar Relatório de Estoque (Alertas de Mínimo)
+- ⚙️ Configurações
+  - 🏢 Dados da Empresa
+    - Editar informações da empresa (Nome, Logo, etc.)
+  - 📚 Gestão de Catálogos
+    - Editar Etapas do Kanban
+    - Editar Categorias Financeiras
+  - 🔗 Gestão de Integrações
+    - Configurar APIs de integração
+- 🆘 Suporte
+  - 🔍 Central de Ajuda
+    - Pesquisar Artigos
+    - Navegar por Categorias de Artigos
+    - Visualizar Conteúdo de Artigos
+  - 📄 Gerenciar Artigos (Administrador)
+    - Criar Novo Artigo
+    - Editar Artigo Existente
+    - Publicar/Despublicar Artigo
+    - Excluir Artigo
+    - Buscar/Filtrar Artigos
+- Perfil do Usuário
+  - Editar Informações de Perfil
+  - Alterar Senha
