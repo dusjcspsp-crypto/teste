@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prisma:migrate": "npx prisma migrate dev --name init",
     "prisma:generate": "npx prisma generate",
-    "full-build": "chmod +x ./node_modules/.bin/prisma && ./node_modules/.bin/prisma generate && nest build"
+    "full-build": "chmod +x ./node_modules/.bin/prisma && ./node_modules/.bin/prisma generate && npx nest build"
 
   },
   "prisma": {
