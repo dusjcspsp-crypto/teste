@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: apppremium_user
+      POSTGRES_PASSWORD: UqyIZ9Ee6BSCNAxnnMjkCPYVIl58UMA3
+      POSTGRES_DB: apppremium_db_3s0u
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://apppremium_user:UqyIZ9Ee6BSCNAxnnMjkCPYVIl58UMA3@db:5432/apppremium_db_3s0u
+      NODE_ENV: production
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+
