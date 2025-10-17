@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: apppremium-backend
+    name: apppremium_backend
     env: node
     buildCommand: npm install && npm run build
     startCommand: npm run start:prod
-    rootDir: backend
+
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
