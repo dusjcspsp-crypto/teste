@@ -2,10 +2,10 @@ FROM node:22-alpine AS development
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./backend/
-COPY prisma ./prisma/
-COPY tsconfig.json tsconfig.build.json ./backend/
-COPY nest-cli.json ./backend/
+COPY package.json package-lock.json ./
+COPY prisma ./
+COPY tsconfig.json tsconfig.build.json ./
+COPY nest-cli.json ./
 
 WORKDIR /app/backend
 
