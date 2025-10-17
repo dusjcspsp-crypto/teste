@@ -1,0 +1,243 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id        String    @id @default(uuid())
+  name      String
+  phone     String?
+  email     String    @unique
+  document  String?
+  address   String?
+  vehicles  Vehicle[]
+  budgets   Budget[]
+  financeiro Financeiro[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Vehicle {
+  id         String    @id @default(uuid())
+  os         String    @unique
+  brand      String
+  model      String
+  plate      String    @unique
+  color      String?
+  customerId String
+  customer   Customer  @relation(fields: [customerId], references: [id])
+  locationId String
+  location   Location  @relation(fields: [locationId], references: [id])
+  budgets    Budget[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  status     String    @default("agendado")
+}
+
+model Employee {
+  id        String     @id @default(uuid())
+  name      String
+  email     String     @unique
+  phone     String?
+  role      String
+  password  String
+  schedules Schedule[]
+  financeiro Financeiro[]
+  assignedTools Tool[]
+  toolMovements ToolMovement[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Product {
+  id        String      @id @default(uuid())
+  name      String
+  category  String
+  unit      String
+  costPrice Float
+  salePrice Float?
+  stock     Int
+  location  String?
+  budgetItems BudgetItem[]
+  inventory   Inventory?  
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Inventory {
+  id        String   @id @default(uuid())
+  productId String   @unique
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  location  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Location {
+  id        String     @id @default(uuid())
+  name      String
+  address   String?
+  vehicles  Vehicle[]
+  budgets   Budget[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Service {
+  id           String     @id @default(uuid())
+  name         String
+  category     String
+  description  String?
+  timeEstimate Int
+  price        Float
+  budgetItems  BudgetItem[]
+  schedules    Schedule[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Budget {
+  id             String          @id @default(uuid())
+  number         String?         @unique
+  customerId     String
+  customer       Customer        @relation(fields: [customerId], references: [id])
+  vehicleId      String?
+  vehicle        Vehicle?        @relation(fields: [vehicleId], references: [id])
+  locationId     String?
+  location       Location?       @relation(fields: [locationId], references: [id])
+  status         String?
+  totalValue     Float
+  discount       Float?
+  discountType   String?
+  discountValue  Float?
+  paymentConditions String?
+  observations   String?
+  entryDate      DateTime?
+  exitDate       DateTime?
+  sentAt         DateTime?
+  approvedAt     DateTime?
+  rejectedAt     DateTime?
+  budgetItems    BudgetItem[]
+  visualMarkings VisualMarking[]
+  schedule       Schedule[]
+  financeiro     Financeiro[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  // VBI Protocol fields
+  // These fields are part of the Visual Budget Interface protocol
+  // and are used to track the state and progress of the budget
+  // through various stages of the workflow.
+  // They are not directly editable by the user, but are updated
+  // by the system based on actions taken in the UI.
+  // The workflow is: Orçamento (Venda) -> Agendamento (Planejamento) -> Produção (Checklist na Entrada) -> Controle de Pátio (Execução).
+  // The Checklist is performed on the day of vehicle entry, not during budget creation.
+  // The colorist\\\'s functions (formula creation, weighing, material withdrawal, and posting)
+  // are centralized in the \\\'Inventário\\\' module.
+  // An alert must be created if a vehicle is in production and the paint formula is not ready.
+  // The Kanban for the paint lab should show scheduled vehicles, active requests, colors in preparation,
+  // awaiting approval, and completed.
+  // The production collaborator can request materials directly from the lab Kanban,
+  // and these materials will be directly posted to the collaborator/vehicle\\\'s production,
+  // with the cost provisioned at the time of the request and finalized after confirmation by the stock clerk.
+  // The system must also track individual employee productivity against system averages for each service type.
+  vbiStatus             String?   @default("Orcamento") // Current status in the VBI workflow
+  vbiChecklistCompleted Boolean   @default(false)    // Indicates if the entry checklist is completed
+  vbiPaintFormulaReady  Boolean   @default(false)    // Indicates if the paint formula is ready
+  vbiMaterialRequest    Boolean   @default(false)    // Indicates if materials have been requested
+  vbiMaterialPosted     Boolean   @default(false)    // Indicates if materials have been posted
+  vbiProductivityScore  Float?                       // Employee productivity score for this budget
+}
+
+model BudgetItem {
+  id        String   @id @default(uuid())
+  budgetId  String
+  budget    Budget   @relation(fields: [budgetId], references: [id])
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id])
+  serviceId String?
+  service   Service? @relation(fields: [serviceId], references: [id])
+  quantity  Int
+  unitPrice Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VisualMarking {
+  id          String   @id @default(uuid())
+  budgetId    String
+  budget      Budget   @relation(fields: [budgetId], references: [id])
+  markingId   String
+  imageId     String
+  x           Float
+  y           Float
+  serviceData String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Financeiro {
+  id          String    @id @default(uuid())
+  description String
+  amount      Float
+  type        String // 'receita' or 'despesa'
+  date        DateTime
+  budgetId    String?
+  budget      Budget?   @relation(fields: [budgetId], references: [id])
+  customerId  String?
+  customer    Customer? @relation(fields: [customerId], references: [id])
+  employeeId  String?
+  employee    Employee? @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Schedule {
+  id         String   @id @default(uuid())
+  budgetId   String
+  budget     Budget   @relation(fields: [budgetId], references: [id])
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  serviceId  String
+  service    Service  @relation(fields: [serviceId], references: [id])
+  date       DateTime
+  time       String
+  status     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+
+model Tool {
+  id                  String         @id @default(uuid())
+  name                String
+  description         String?
+  code                String?
+  defaultLocation     String?
+  acquisitionValue    Float?
+  status              String         @default("DISPONIVEL") // DISPONIVEL, EM_USO, MANUTENCAO
+  assignedEmployeeId  String?
+  assignedEmployee    Employee?      @relation(fields: [assignedEmployeeId], references: [id])
+  lastRequestDate     DateTime?
+  movements           ToolMovement[]
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+}
+
+model ToolMovement {
+  id         String   @id @default(uuid())
+  toolId     String
+  tool       Tool     @relation(fields: [toolId], references: [id])
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  type       String   // REQUISICAO, DEVOLUCAO
+  date       DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
